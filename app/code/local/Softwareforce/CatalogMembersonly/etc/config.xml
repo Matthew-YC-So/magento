@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <modules>
+        <Softwareforce_CatalogMembersonly>
+            <version>1.0.0</version>
+        </Softwareforce_CatalogMembersonly>
+    </modules>
+    <global>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_list>Softwareforce_CatalogMembersonly_Block_Product_List</product_list>
+                    <product_widget_new>Softwareforce_CatalogMembersonly_Block_Product_Widget_New</product_widget_new>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <catalogmembersonly>
+                <class>Softwareforce_CatalogMembersonly_Model</class>
+            </catalogmembersonly>
+            <catalog>
+                <rewrite>
+                    <category>Softwareforce_CatalogMembersonly_Model_Category</category>
+                    <product>Softwareforce_CatalogMembersonly_Model_Product</product>
+                </rewrite>
+            </catalog>
+        </models>
+        <helpers>
+            <catalogMembersonly>
+                <class>Softwareforce_CatalogMembersonly_Helper</class>
+            </catalogMembersonly>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+<!-- 
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <catalogmembersonly_observer>
+                        <class>catalogmembersonly/observer</class>
+                        <method>changeTopMenuItems</method>
+                    </catalogmembersonly_observer>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+
+            
+            -->            
+        </events>          
+    </frontend>
+</config>

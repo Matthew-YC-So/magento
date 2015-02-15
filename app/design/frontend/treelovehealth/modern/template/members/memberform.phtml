@@ -1,0 +1,160 @@
+<?php
+/**
+ * Softwareforce
+ *
+ *
+ * @category    design
+ * @package     Softwareforce_MemberApplication
+ * @copyright   Copyright (c) 2015 Software Force
+ * @license     GPL 2.0
+ */
+?>
+<?php
+   $helper = $this->helper('Softwareforce_MemberApplication');
+?>
+<div class="page-title">
+    <h1>會員申請表格</h1>
+</div>
+<form id="memberform" name="memberform" id="memberform" action="<?php echo $this->getUrl('memberform/index/apply') ?>" method="post">
+    <div class="fieldset">
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="fullname" class="required"><em>*</em>姓名:</label>
+                    <div class="input-box">
+                        <input name="fullname" id="fullname" title="姓名" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getFullName()) ?>" class="input-text required-entry" type="text" placeholder="姓名"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="nickname" class="required">暱稱／洋名（如有）:</label>
+                    <div class="input-box">
+                        <input name="nickname" id="nickname" title="暱稱／洋名" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getNickName()) ?>" class="input-text" type="text" placeholder="暱稱/洋名" />
+                    </div>
+                </div>
+            </li>
+            <li id="gender_fields">
+                <label for="gender" class="required"><em>*</em>性別:</label>
+                <input name="gender" id="genderMale" title="男" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "M" ? "checked='checked'" : "") ?> class="required-entry" type="radio" value="M" /><label for="genderMale">男</label>
+                <input name="gender" id="genderFemale" title="女" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "F" ? "checked='checked'" : "") ?> class="required-entry" type="radio"  value="F" /><label for="genderFemale">女</label>                
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="birthdate">出生日期:</label>
+                    <div class="input-box">
+                        <input name="birthdate" id="birthdate" title="出生日期" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getBirthdate()) ?>" class="input-text validate-date" type="text"placeholder="出生年月日, (例如: 1985/12/25)" />
+                        <img title="Select date" id="_dob_trig" src="<?php echo $this->getSkinUrl('images/calendar.gif'); ?>" class="v-middle">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="birthtime">出生時間:</label>
+                    <div class="input-box">
+                        <select name="birthtime" id="birthtime">
+                            <?php
+                            $hours = range(-1, 23);
+                            foreach ($hours as $number) {
+                                $text = $number != -1 ? sprintf('%02d:00', $number) : "--時間--";
+                                $value = $number != -1 ? sprintf('%02d:00', $number) : "--";
+                                $selected = $helper->getBirthtime() == $value ? "selected='selected'" : "";
+                                echo "<option value='$value' $selected >" . $text . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <span><?php echo $helper->__("（如欲享用免費/半價八字諮詢服務，請選擇出生時間）") ?></span>
+                    </div>                    
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="email" class="required"><em>*</em>電郵:</label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="電郵" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getEmail()) ?>" class="input-text required-entry validate-email" type="text"placeholder="電郵" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="telephone">電話:</label>
+                    <div class="input-box">
+                        <input name="tel" id="telephone" title="電話" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getTel()) ?>" class="input-text" type="text" placeholder="電話" />
+                    </div>
+                </div>
+            </li>
+            <li class="question-item">
+                <p class="item-title"><span class="bullet">（一）</span><span class="description">購物滿HK$500，即可申請成為會員，並以半價尊享兩項諮詢服務。<br /><label for="invoiceno1">請填寫你購物滿HK$500的九位數字發票編號:</label><input name="invoiceno1" id="invoiceno1" title="購物滿HK$500" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getInvoiceNo1()) ?>" class="input-text" type="text" placeholder="發票編號" /></span></p>
+                <div class="item-detail">
+                    <label>如欲享用以下服務，請勾選，我們稍後會聯絡您安排諮詢詳情:</label>
+                    <?php 
+                    foreach($helper->item1services as $key=>$value){
+                        $checked = in_array($key, $helper->item1ServicesChecked) ? "checked='checked'" : "";
+                        echo "<div class='list-item'><label for='item1service$key'>$value</label><input type='checkbox' name='item1_services[]' id='item1service$key' value='$key' $checked /></div>";
+                    }
+                    ?>                    
+                </div>
+            </li>
+            <li class="question-item">
+                <p class="item-title"><span class="bullet">（二）</span><span class="description">購物滿HK$2000, 除可申請成為會員外，另可享免費「八字命盤基本分析」服務。<br /><label for="invoiceno2">請填寫你購物滿HK$2000的九位數字發票編號:</label><input name="invoiceno2" id="invoiceno2" title="購物滿HK$2000" value="<?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getInvoiceNo2()) ?>" class="input-text" type="text" placeholder="發票編號" /></span></p>
+                <div class="item-detail">
+                    <label>如欲享用以下服務，請勾選，我們稍後會聯絡您安排諮詢詳情:</label>
+                    <?php 
+                    foreach($helper->item2services as $key=>$value){
+                        $checked = in_array($key, $helper->item2ServicesChecked) ? "checked='checked'" : "";
+                        echo "<div class='list-item'><label for='item2service$key'>$value</label><input type='checkbox' name='item2_services[]' id='item2service$key' value='$key' $checked /></div>";
+                    }
+                    ?>
+                </div>
+            </li>
+            <li class="question-item">
+                <p class="item-title"><span class="bullet">（三）</span><span class="description">成功申請會員後將獲贈HK$50生日月份購物禮券（有效期為一年），於生日月份購物另可獲贈以下其中一項精選產品： <br /></span></p>
+                <div class="item-detail" id="birthday_gifts">
+                    <?php 
+                    foreach($this->helper('Softwareforce_MemberApplication')->gifts as $key=>$value){
+                        $checked = $key == $helper->getBirthdaygift() ? "checked='checked'" : "";
+                        echo "<div class='list-item'><input type='radio' name='birthday_gift' id='birthday_gift$key' value='$key' $checked /><label for='birthday_gift$key'>$value</label></div>";
+                    }
+                    ?>
+                    <div>（我們會盡量安排送贈會員所選擇的精選產品，如遇缺貨，將送贈其他產品，敬請見諒！）</div>
+                    <div>（選擇*精選產品的會員，宜先進行八字諮詢，以便選擇適合個人五行之開運產品）</div>
+                </div>
+            </li>
+            <li class="question-item">
+                <p class="item-title"><span class="bullet">（四）</span><span class="description">請問您對以下哪一方面較感興趣（可選擇多項）？</span></p>
+                <div class="item-detail" id="interests">
+                    <?php 
+                    foreach($this->helper('Softwareforce_MemberApplication')->interests as $key=>$value){
+                        $checked = in_array($key, $helper->interestedInChecked) ? "checked='checked'" : "";
+                        echo "<div class='list-item'><input type='checkbox' name='interestedin[]' id='interestedin$key' value='$key' $checked /><label for='interestedin$key'>$value</label></div>";
+                    }
+                    ?>                    
+                </div>
+            </li>
+            <li class="question-item">
+                <p class="item-title"><span class="bullet">（五）</span><span class="description"><label for="comment">您對「木情有思」服務及產品的意見是：</label></span></p>                
+                <div class="item-detail">
+                    <textarea name="comment" id="comment" title="意見" class="input-text" placeholder="你的寶貴意見"><?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getComment()) ?></textarea>
+                </div>
+            </li>
+            <li>
+                <p>感謝您申請成為「木情有思網上商店」會員，以後購物即可享九五折優惠，並尊享各項會員產品及禮遇！ 祝您未來有更多愉快的購物經驗！如有疑問，歡迎與我們聯絡（電話：9719 3851 / 9739 7035 電郵：info@treelovehealth.com.hk)</p>
+                <br />
+                <p>收集個人資料聲明：
+                    「木情有思」致力保護您的個人資料私隱。「木情有思」在處理您的個人資料數據時，會遵守香港特別行政區的《個人資料(私隱)條例》
+                    （第486章）所規定的要求，請安心使用本公司的服務。我們所保留的個人資料數據將會只用於為您提供「木情有思」的服務、產品、新聞
+                    和促銷活動等資訊。</p>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required">* 必需填寫</p>
+        <button type="submit" title="確認申請" class="button"><span><span>確認</span></span></button>
+    </div>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+Calendar.setup({
+inputField : 'birthdate',
+ifFormat : '%Y/%m/%e',
+button : '_dob_trig',
+align : 'Bl',
+singleClick : true
+});
+//]]>
+</script>

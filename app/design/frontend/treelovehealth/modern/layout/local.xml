@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/**
+ * local.xml
+ *
+ * Local layout modifications for our local theme
+ *
+ * @category    design
+ * @package     treelovehealth_theme_default
+ * @copyright   Copyright (c) 2014 Magento.
+ */
+-->
+
+<layout version="0.1.0"><!-- everything goes in here -->
+ <default> <!-- this container tells you what your default layout is. like 'header' and 'footer' -->
+    
+      <!-- remove Magento's Default Sidebar Blocks -->
+
+        <!-- remove name="cart_sidebar"/ -->                  <!--Cart Sidebar-->
+        <!-- remove name="catalog.product.related"/ -->       <!--Related products sidebar-->
+        <!-- remove name="wishlist_sidebar"/ -->              <!--Wishlist Sidebar-->
+        <!-- remove name="catalog.compare.sidebar"/ -->       <!--Compare Items Sidebar-->
+        <!-- remove name="right.permanent.callout"/ -->      <!--Right Callout Sample Data-->
+        <!-- remove name="left.permanent.callout"/ -->        <!--Left Callout Sample Data-->
+        <!-- remove name="right.reports.product.viewed"/ -->  <!--Viewed Products-->
+        <!-- remove name="right.reports.product.compared"/ --><!--Compared Products-->
+        <!-- remove name="catalog.leftnav"/ -->               <!--Layered Navigation-->
+        <!-- remove name="left.newsletter"/ -->               <!--Sidebar Newsletter-->
+        <!-- remove name="tags_popular"/ -->                  <!--Popular Tags-->
+        <remove name="right.poll" />                    <!--Poll-->
+        <!-- remove name="paypal.partner.right.logo" / -->     <!--Paypal logo Sample Data-->
+        <!-- remove name="catalogsearch.leftnav"/ -->         <!--Layered navigation on search result page-->
+        <!-- remove name="sale.reorder.sidebar"/ -->          <!--Reorder Sidebar When User Logged, in Dashboard-->
+        <!-- remove name="customer_account_navigation"/ -->   <!--Customer Navigation-->
+
+        <reference name="left">
+            <block type="cms/block" name="cms_my_left_adv" before="-">
+                <!--
+                    The content of this block is taken from the database by its block_id.
+                    You can manage it in admin CMS -> Static Blocks
+                -->
+                <action method="setBlockId"><block_id>my_left_advertisement</block_id></action>
+            </block>                
+         </reference>
+         
+        <reference name="right">
+            <block type="cms/block" name="cms_my_right_adv" before="-">
+                <!--
+                    The content of this block is taken from the database by its block_id.
+                    You can manage it in admin CMS -> Static Blocks
+                -->
+                <action method="setBlockId"><block_id>my_right_advertisement</block_id></action>
+            </block>                
+         </reference>         
+
+
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/treelovehealth.css</name></action>
+        </reference>
+
+        <remove name="return_link" />
+        
+         <reference name="footer_links">
+             <!-- Remove 'Advanced Search' -->
+            <action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl" /></action>
+        </reference>
+        
+  </default>
+</layout>

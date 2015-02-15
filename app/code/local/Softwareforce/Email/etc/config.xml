@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <modules>
+        <Softwareforce_Email>
+            <version>1.0.0</version>
+        </Softwareforce_Email>
+    </modules>
+    <global>
+        <models>
+            <core>
+                <rewrite> 
+                    <email_template>Softwareforce_Email_Model_Template</email_template>
+                    <email_queue>Softwareforce_Email_Model_Queue</email_queue>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <smtpmail>
+                <class>Softwareforce_Email_Helper</class>
+            </smtpmail>
+        </helpers>		
+    </global>
+ 
+</config>

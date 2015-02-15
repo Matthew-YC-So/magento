@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<sections>
+		<catalog>
+			<groups>
+                 <membersonly>
+                 	<label>Members Only</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1000</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<comment>Members only area for selected pages access</comment>
+					<fields>
+						<categories translate="label">
+							<label>Categories for members only</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Categories allowed to be accessed by members only. Enter multiple categories separated by comma, e.g. 3,5,8,10.</comment>
+						</categories>
+					</fields>
+				</membersonly>
+			</groups>
+		</catalog>
+	</sections>
+</config>

@@ -1,0 +1,48 @@
+body.cms-index-index, body.cms-home {
+    font-family:  tahoma, "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif, Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", serif;
+}
+
+ul.products-grid {
+    list-style: none;
+}
+
+#memberform #gender_fields label, #memberform #gender_fields input,
+#memberform .question-item label, #memberform .question-item input {
+    float:none;
+    display:inline-block;
+    width:auto;
+}
+
+#memberform label {
+    font-weight: normal;
+}
+
+#memberform #gender_fields label, #memberform .question-item label {
+    margin-right: 2em;
+}
+
+#memberform .question-item .item-detail {
+    margin-left: 3em;
+}
+
+#memberform .question-item .item-title span{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#memberform .question-item .item-title .description {
+    width: 90%;
+}
+
+#memberform .list-item label {
+    margin-left: 1em;
+}
+
+#memberform .list-item {
+    margin:0 0 0.2em 0;
+}
+
+#memberform #comment {
+    width: 100%;
+}
+

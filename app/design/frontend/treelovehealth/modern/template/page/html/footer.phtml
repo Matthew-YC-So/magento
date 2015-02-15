@@ -1,0 +1,35 @@
+<?php
+/**
+ * Treelovehealth
+ *
+ */
+?>
+
+<?php
+    $company_web = Mage::getModel('core/variable')
+        ->setStoreId(Mage::app()->getStore()->getId())
+        ->loadByCode('CompanyWeb')
+        ->getValue('text');
+    
+    // Mage::log('My log - $company_web : '. $company_web);
+
+    $company_web = is_null($company_web) || $company_web == '' ? 'http://www.treelovehealth.com.hk' : $company_web ;
+?>
+<div class="footer-container">
+    <div class="footer">
+        <?php echo $this->getChildHtml('bottomContainer') ?>
+        <div class="f-right">
+            <!--
+                <img src="<?php echo $this->getSkinUrl('images/media/footer_callout.png');?>" class="footer-callout" alt="" />
+             -->            
+            <?php echo $this->getChildHtml('store_switcher') ?>
+        </div>
+        <div class="f-left">
+            <?php echo $this->getChildHtml('cms_footer_links') ?>
+            <?php echo $this->getChildHtml('footer_links') ?>
+            <?php echo $this->getChildHtml('newsletter') ?>
+            <p class="treelovehealth-web"><a href="<?php echo $company_web ?>" onclick="this.target='_blank'"><?php echo $this->__('Welcome to visit our web space') ?></a>&nbsp;|&nbsp;<?php echo $this->__('This site is powered by Magento') ?>&nbsp;<?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+            <address><?php echo $this->getCopyright() ?></address>
+        </div>
+    </div>
+</div>

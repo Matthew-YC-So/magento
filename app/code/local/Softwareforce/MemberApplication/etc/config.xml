@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <modules>
+        <Softwareforce_MemberApplication>
+            <version>1.0.0</version>
+        </Softwareforce_MemberApplication>
+    </modules>    
+    <frontend>
+        <routers>
+            <memberform>
+                <use>standard</use>
+                <args>
+                    <module>Softwareforce_MemberApplication</module>
+                    <frontName>memberform</frontName>
+                </args>
+            </memberform>
+        </routers>
+        <layout>
+            <updates>
+                <memberform>
+                    <file>memberform.xml</file>
+                </memberform>
+            </updates>
+        </layout>
+    </frontend>    
+    <global>
+        <helpers>
+            <Softwareforce_MemberApplication>
+                <class>Softwareforce_MemberApplication_Helper</class>
+            </Softwareforce_MemberApplication>
+        </helpers>        
+    </global>
+</config>

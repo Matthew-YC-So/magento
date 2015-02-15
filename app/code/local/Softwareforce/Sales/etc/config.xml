@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <modules>
+        <Softwareforce_Sales>
+            <version>1.0.0</version>
+        </Softwareforce_Sales>
+    </modules>
+
+    <global>
+        <models>
+            <sales>
+                <rewrite>
+<!--
+    <order_pdf_invoice>Softwareforce_Sales_Model_Order_Pdf_Invoice</order_pdf_invoice>
+-->
+                </rewrite>
+            </sales>
+            <core>
+            <rewrite> 
+                <email_template>Softwareforce_Email_Model_Template</email_template>
+            </rewrite>
+            </core>
+        </models>
+    </global>
+</config>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * c
+ *
+ * DISCLAIMER
+ *
+ * @category    design
+ * @package     Softwareforce_MemberApplication
+ * @copyright   Copyright (c) 2015 Software Force
+ * @license     GPL 2.0
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params></params></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>            
+        </reference>
+<!-- 
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="Softwareforce_MemberApplication"><label>Apply Member</label><url>memberform</url><title>Apply Member</title><prepare>true</prepare></action>
+        </reference>
+-->       
+    </default>
+
+    <memberform_index_index translate="label">
+        <label>Member Application Form</label>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="contacts"><title>Member Application Form</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setHeaderTitle" translate="title" module="Softwareforce_MemberApplication"><title>Member Application Form</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="memberForm" template="members/memberform.phtml"/>
+        </reference>
+    </memberform_index_index>
+</layout>
