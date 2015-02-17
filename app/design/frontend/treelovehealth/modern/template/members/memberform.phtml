@@ -15,7 +15,7 @@
 <div class="page-title">
     <h1>會員申請表格</h1>
 </div>
-<form id="memberform" name="memberform" id="memberform" action="<?php echo $this->getUrl('memberform/index/apply') ?>" method="post">
+<form id="memberform" name="memberform" action="<?php echo $this->getUrl('memberform/index/apply') ?>" method="post">
     <div class="fieldset">
         <ul class="form-list">
             <li class="fields">
@@ -34,8 +34,8 @@
             </li>
             <li id="gender_fields">
                 <label for="gender" class="required"><em>*</em>性別:</label>
-                <input name="gender" id="genderMale" title="男" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "M" ? "checked='checked'" : "") ?> class="required-entry" type="radio" value="M" /><label for="genderMale">男</label>
-                <input name="gender" id="genderFemale" title="女" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "F" ? "checked='checked'" : "") ?> class="required-entry" type="radio"  value="F" /><label for="genderFemale">女</label>                
+                <input name="gender" id="genderMale" title="男" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "M" ? "checked='checked'" : "") ?> class="validate-one-required-by-name" type="radio" value="M" /><label for="genderMale">男</label>
+                <input name="gender" id="genderFemale" title="女" <?php echo $this->escapeHtml($this->helper('Softwareforce_MemberApplication')->getGender() == "F" ? "checked='checked'" : "") ?> type="radio"  value="F" /><label for="genderFemale">女</label>                
             </li>
             <li class="fields">
                 <div class="field">
@@ -156,5 +156,6 @@ button : '_dob_trig',
 align : 'Bl',
 singleClick : true
 });
+var theForm = new VarienForm('memberform', true);
 //]]>
 </script>
